@@ -61,7 +61,7 @@ body {
 /* ── HEADER ──────────────────────────────────────── */
 #site-header {
   position: fixed;
-  top: 34px; left: 0; right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 40;
   background: #fff;
   border-bottom: 1px solid #f0f0f0;
@@ -151,7 +151,7 @@ body {
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 106px; left: 0; right: 0; bottom: 0;
+  top: 72px; left: 0; right: 0; bottom: 0;
   background: #fff;
   z-index: 35;
   padding: 24px;
@@ -693,11 +693,6 @@ footer { border-top: 1px solid #e9e9e9; }
 </head>
 <body>
 
-<!-- ── HELLO BAR ───────────────────────────────────── -->
-<div id="hello-bar">
-  <span data-i18n="hello-bar">Profesionální likvidace obchodních společností &nbsp;·&nbsp; <a href="mailto:info@lexliq.cz">info@lexliq.cz</a></span>
-</div>
-
 <!-- ── HEADER ─────────────────────────────────────── -->
 <header id="site-header">
   <div class="container">
@@ -741,7 +736,7 @@ footer { border-top: 1px solid #e9e9e9; }
   <a href="#kontakt" class="btn-green" onclick="closeMobileMenu()" data-i18n="nav-cta">Domluvte si konzultaci</a>
 </div>
 
-<main style="padding-top: 106px;">
+<main style="padding-top: 72px;">
 
   <!-- ── HERO ────────────────────────────────────── -->
   <section class="hero" style="padding: 72px 24px 0;">
@@ -1156,7 +1151,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const target = document.querySelector(id);
     if(target){
       e.preventDefault();
-      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 114, behavior: 'smooth' });
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 84, behavior: 'smooth' });
       closeMobileMenu();
     }
   });
