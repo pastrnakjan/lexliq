@@ -5,14 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lexliq – Profesionální likvidace obchodních společností</title>
 <meta name="description" content="Komplexní služby profesionálního likvidátora pro advokátní kanceláře, korporace a podnikatele při ukončování společností.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; scroll-behavior: smooth; max-width: 100vw; overflow-x: hidden; }
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: #101767;
   background: #fff;
   -webkit-font-smoothing: antialiased;
@@ -24,10 +21,47 @@ body {
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .container-wide { width: 100%; max-width: 1500px; margin: 0 auto; padding: 0 24px; }
 
+/* ── HELLO BAR ───────────────────────────────────── */
+#hello-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  height: 34px;
+  background: #101767;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .75rem;
+  color: rgba(255,255,255,.7);
+  letter-spacing: .025em;
+}
+#hello-bar a { color: rgba(255,255,255,.88); text-decoration: none; }
+#hello-bar a:hover { color: #fff; }
+
+/* ── LANG SWITCH ─────────────────────────────────── */
+.lang-switch { display: flex; align-items: center; gap: 2px; margin-left: 10px; }
+.lang-btn {
+  background: none;
+  border: none;
+  font-size: .74rem;
+  font-weight: 700;
+  color: #a9acc3;
+  cursor: pointer;
+  padding: 3px 6px;
+  font-family: inherit;
+  letter-spacing: .07em;
+  border-radius: 4px;
+  transition: color .15s;
+  line-height: 1;
+}
+.lang-btn.active { color: #101767; }
+.lang-btn:hover { color: #101767; }
+.lang-sep { color: #d0d2e0; font-size: .7rem; }
+
 /* ── HEADER ──────────────────────────────────────── */
 #site-header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 34px; left: 0; right: 0;
   z-index: 40;
   background: #fff;
   border-bottom: 1px solid #f0f0f0;
@@ -91,7 +125,7 @@ body {
   transition: background .2s;
   border: none;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: inherit;
 }
 .btn-green:hover { background: #2ca363; }
 
@@ -117,7 +151,7 @@ body {
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 72px; left: 0; right: 0; bottom: 0;
+  top: 106px; left: 0; right: 0; bottom: 0;
   background: #fff;
   z-index: 35;
   padding: 24px;
@@ -524,7 +558,7 @@ body {
   padding: 11px 14px;
   border: 1.5px solid #e5e7ef;
   border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  font-family: inherit;
   font-size: .9rem;
   color: #101767;
   background: #fff;
@@ -548,7 +582,7 @@ body {
   font-weight: 500;
   border: none;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: inherit;
   transition: background .2s;
 }
 .form-btn:hover { background: #1a2580; }
@@ -659,6 +693,11 @@ footer { border-top: 1px solid #e9e9e9; }
 </head>
 <body>
 
+<!-- ── HELLO BAR ───────────────────────────────────── -->
+<div id="hello-bar">
+  <span data-i18n="hello-bar">Profesionální likvidace obchodních společností &nbsp;·&nbsp; <a href="mailto:info@lexliq.cz">info@lexliq.cz</a></span>
+</div>
+
 <!-- ── HEADER ─────────────────────────────────────── -->
 <header id="site-header">
   <div class="container">
@@ -672,14 +711,19 @@ footer { border-top: 1px solid #e9e9e9; }
         </div>
       </a>
       <ul class="nav-links">
-        <li><a href="#o-spolecnosti">O společnosti</a></li>
-        <li><a href="#sluzby">Služby</a></li>
-        <li><a href="#spoluprace">Spolupráce s AK</a></li>
-        <li><a href="#reference">Reference</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#o-spolecnosti" data-i18n="nav-about">O společnosti</a></li>
+        <li><a href="#sluzby" data-i18n="nav-services">Služby</a></li>
+        <li><a href="#spoluprace" data-i18n="nav-coop">Spolupráce</a></li>
+        <li><a href="#reference" data-i18n="nav-ref">Reference</a></li>
+        <li><a href="#kontakt" data-i18n="nav-contact">Kontakt</a></li>
       </ul>
       <div class="nav-right">
-        <a href="#kontakt" class="btn-green">Domluvte si konzultaci</a>
+        <div class="lang-switch">
+          <button id="lang-cs" class="lang-btn active" onclick="setLang('cs')">CZ</button>
+          <span class="lang-sep">|</span>
+          <button id="lang-en" class="lang-btn" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="#kontakt" class="btn-green" data-i18n="nav-cta">Domluvte si konzultaci</a>
         <button class="nav-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -689,19 +733,19 @@ footer { border-top: 1px solid #e9e9e9; }
 </header>
 
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#o-spolecnosti" onclick="closeMobileMenu()">O společnosti</a>
-  <a href="#sluzby" onclick="closeMobileMenu()">Služby</a>
-  <a href="#spoluprace" onclick="closeMobileMenu()">Spolupráce s AK</a>
-  <a href="#reference" onclick="closeMobileMenu()">Reference</a>
-  <a href="#kontakt" onclick="closeMobileMenu()">Kontakt</a>
-  <a href="#kontakt" class="btn-green" onclick="closeMobileMenu()">Domluvte si konzultaci</a>
+  <a href="#o-spolecnosti" onclick="closeMobileMenu()" data-i18n="nav-about">O společnosti</a>
+  <a href="#sluzby" onclick="closeMobileMenu()" data-i18n="nav-services">Služby</a>
+  <a href="#spoluprace" onclick="closeMobileMenu()" data-i18n="nav-coop">Spolupráce</a>
+  <a href="#reference" onclick="closeMobileMenu()" data-i18n="nav-ref">Reference</a>
+  <a href="#kontakt" onclick="closeMobileMenu()" data-i18n="nav-contact">Kontakt</a>
+  <a href="#kontakt" class="btn-green" onclick="closeMobileMenu()" data-i18n="nav-cta">Domluvte si konzultaci</a>
 </div>
 
-<main style="padding-top: 72px;">
+<main style="padding-top: 106px;">
 
   <!-- ── HERO ────────────────────────────────────── -->
   <section class="hero" style="padding: 72px 24px 0;">
-    <h1>Odborné řízení <em>likvidací</em> obchodních společností.</h1>
+    <h1 data-i18n="hero-h1">Odborné řízení <em>likvidací</em> obchodních společností.</h1>
   </section>
 
   <!-- Hero visual band -->
@@ -737,7 +781,7 @@ footer { border-top: 1px solid #e9e9e9; }
   <section class="green-box-section" id="o-spolecnosti">
     <div class="container">
       <div class="green-box green-box-top">
-        <p>Nezávislé a komplexní služby profesionálního likvidátora — pro účetní, daňové a advokátní kanceláře, nebo korporace a podnikatele, kteří potřebují ukončit podnikání správně a bez zbytečné zátěže.</p>
+        <p data-i18n="green-box-1">Nezávislé a komplexní služby profesionálního likvidátora — pro účetní, daňové a advokátní kanceláře, nebo korporace a podnikatele, kteří potřebují ukončit podnikání správně a bez zbytečné zátěže.</p>
       </div>
     </div>
   </section>
@@ -752,8 +796,8 @@ footer { border-top: 1px solid #e9e9e9; }
               <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
             </svg>
           </div>
-          <h3>Vaše jistota při ukončování podnikání</h3>
-          <p>Přebíráme odpovědnost za celý proces likvidace — od přípravy dokumentace až po výmaz z obchodního rejstříku.</p>
+          <h3 data-i18n="feat-1-h">Vaše jistota při ukončování podnikání</h3>
+          <p data-i18n="feat-1-p">Přebíráme odpovědnost za celý proces likvidace — od přípravy dokumentace až po výmaz z obchodního rejstříku.</p>
         </article>
         <article class="feature-item">
           <div class="feature-icon">
@@ -761,8 +805,8 @@ footer { border-top: 1px solid #e9e9e9; }
               <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
           </div>
-          <h3>Odborný tým s praxí</h3>
-          <p>Zkušenosti z corporate governance, restrukturalizací, M&A transakcí i krizového řízení — přenášíme je do každé likvidace.</p>
+          <h3 data-i18n="feat-2-h">Odborný tým s praxí</h3>
+          <p data-i18n="feat-2-p">Zkušenosti z corporate governance, restrukturalizací, M&A transakcí i krizového řízení — přenášíme je do každé likvidace.</p>
         </article>
         <article class="feature-item">
           <div class="feature-icon">
@@ -770,8 +814,8 @@ footer { border-top: 1px solid #e9e9e9; }
               <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
             </svg>
           </div>
-          <h3>Likvidace na klíč</h3>
-          <p>Od rozhodnutí o likvidaci přes výkon funkce likvidátora až po archivaci a skartaci dokumentů — vše pod jednou střechou.</p>
+          <h3 data-i18n="feat-3-h">Likvidace na klíč</h3>
+          <p data-i18n="feat-3-p">Od rozhodnutí o likvidaci přes výkon funkce likvidátora až po archivaci a skartaci dokumentů — vše pod jednou střechou.</p>
         </article>
       </div>
     </div>
@@ -782,42 +826,42 @@ footer { border-top: 1px solid #e9e9e9; }
     <div class="container">
       <div class="split-inner">
         <div class="split-content">
-          <span class="section-label">Služby</span>
-          <h2 class="numbered-header" style="margin-bottom: 0;">Co pro vás<br><em style="font-style:normal;color:#6873B0">zajistíme</em></h2>
+          <span class="section-label" data-i18n="label-services">Služby</span>
+          <h2 class="numbered-header" data-i18n="services-h" style="margin-bottom: 0;">Co pro vás<br><em style="font-style:normal;color:#6873B0">zajistíme</em></h2>
           <div class="services-list">
             <div class="service-row">
               <div class="service-row-num">01</div>
               <div class="service-row-body">
-                <h3>Příprava likvidace a vstupní analýza</h3>
-                <p>Detailní analýza společnosti, dokumentace, účetnictví, majetku a závazků. Stanovíme správný a bezpečný postup likvidace.</p>
+                <h3 data-i18n="svc-1-h">Příprava likvidace a vstupní analýza</h3>
+                <p data-i18n="svc-1-p">Detailní analýza společnosti, dokumentace, účetnictví, majetku a závazků. Stanovíme správný a bezpečný postup likvidace.</p>
               </div>
             </div>
             <div class="service-row">
               <div class="service-row-num">02</div>
               <div class="service-row-body">
-                <h3>Jmenování profesionálního likvidátora</h3>
-                <p>Výkon funkce likvidátora odborným týmem Lexliq. Přebíráme zákonnou odpovědnost a zastupujeme společnost vůči úřadům i třetím osobám.</p>
+                <h3 data-i18n="svc-2-h">Jmenování profesionálního likvidátora</h3>
+                <p data-i18n="svc-2-p">Výkon funkce likvidátora odborným týmem Lexliq. Přebíráme zákonnou odpovědnost a zastupujeme společnost vůči úřadům i třetím osobám.</p>
               </div>
             </div>
             <div class="service-row">
               <div class="service-row-num">03</div>
               <div class="service-row-body">
-                <h3>Vypořádání majetku a závazků</h3>
-                <p>Řídíme ukončení smluvních vztahů, vypořádání závazků a pohledávek a případné zpeněžení majetku — v souladu s právními předpisy.</p>
+                <h3 data-i18n="svc-3-h">Vypořádání majetku a závazků</h3>
+                <p data-i18n="svc-3-p">Řídíme ukončení smluvních vztahů, vypořádání závazků a pohledávek a případné zpeněžení majetku — v souladu s právními předpisy.</p>
               </div>
             </div>
             <div class="service-row">
               <div class="service-row-num">04</div>
               <div class="service-row-body">
-                <h3>Administrace dokumentů a závěrečná zpráva</h3>
-                <p>Vedení likvidační agendy, komunikace s úřady, zpracování účetní závěrky, příprava zprávy likvidátora a návrh na výmaz společnosti.</p>
+                <h3 data-i18n="svc-4-h">Administrace dokumentů a závěrečná zpráva</h3>
+                <p data-i18n="svc-4-p">Vedení likvidační agendy, komunikace s úřady, zpracování účetní závěrky, příprava zprávy likvidátora a návrh na výmaz společnosti.</p>
               </div>
             </div>
             <div class="service-row">
               <div class="service-row-num">05</div>
               <div class="service-row-body">
-                <h3>Archivace a certifikovaná skartace dokumentů</h3>
-                <p>Zákonná archivace včetně digitalizace a řízená certifikovaná skartace s vydáním protokolu. Výrazně snižuje compliance rizika klienta i jeho poradců.</p>
+                <h3 data-i18n="svc-5-h">Archivace a certifikovaná skartace dokumentů</h3>
+                <p data-i18n="svc-5-p">Zákonná archivace včetně digitalizace a řízená certifikovaná skartace s vydáním protokolu. Výrazně snižuje compliance rizika klienta i jeho poradců.</p>
               </div>
             </div>
           </div>
@@ -833,7 +877,7 @@ footer { border-top: 1px solid #e9e9e9; }
   <section class="green-box-section">
     <div class="container">
       <div class="green-box green-box-bottom">
-        <p>Klienti se na nás obracejí, protože víme, jak ukončit podnikání bezpečně, transparentně a bez zbytečné osobní zátěže. Nejsme jen administrátoři — přebíráme skutečnou odpovědnost za výsledek.</p>
+        <p data-i18n="green-box-2">Klienti se na nás obracejí, protože víme, jak ukončit podnikání bezpečně, transparentně a bez zbytečné osobní zátěže. Nejsme jen administrátoři — přebíráme skutečnou odpovědnost za výsledek.</p>
       </div>
     </div>
   </section>
@@ -843,25 +887,25 @@ footer { border-top: 1px solid #e9e9e9; }
     <div class="container">
       <div class="split-inner" style="flex-direction: row-reverse;">
         <div class="split-content" style="padding-right: 0; padding-left: 80px;">
-          <span class="section-label">Spolupráce</span>
-          <h2 class="numbered-header">Outsourcovaný likvidátor<br><em style="font-style:normal;color:#6873B0">pro vaši kancelář či skupinu</em></h2>
-          <p style="font-size:1rem;color:#5a5f8a;line-height:1.6;margin-bottom:32px;">Lexliq působí jako outsourcovaný likvidátor pro advokátní kanceláře, účetní a daňové poradce. Vy zůstáváte hlavním kontaktem pro klienta — Lexliq zajišťuje odborné provedení likvidace.</p>
+          <span class="section-label" data-i18n="label-coop">Spolupráce</span>
+          <h2 class="numbered-header" data-i18n="coop-h">Outsourcovaný likvidátor<br><em style="font-style:normal;color:#6873B0">pro vaši kancelář či skupinu</em></h2>
+          <p data-i18n="coop-p" style="font-size:1rem;color:#5a5f8a;line-height:1.6;margin-bottom:32px;">Lexliq působí jako outsourcovaný likvidátor pro advokátní kanceláře, účetní a daňové poradce. Vy zůstáváte hlavním kontaktem pro klienta — Lexliq zajišťuje odborné provedení likvidace.</p>
           <ul class="numbered-list">
             <li>
               <span class="num-index">01</span>
-              <span class="num-text">White-label spolupráce</span>
+              <span class="num-text" data-i18n="coop-1">White-label spolupráce</span>
             </li>
             <li>
               <span class="num-index">02</span>
-              <span class="num-text">Outsourcing likvidací</span>
+              <span class="num-text" data-i18n="coop-2">Outsourcing likvidací</span>
             </li>
             <li>
               <span class="num-index">03</span>
-              <span class="num-text">Smluvní cenové modely</span>
+              <span class="num-text" data-i18n="coop-3">Smluvní cenové modely</span>
             </li>
             <li>
               <span class="num-index">04</span>
-              <span class="num-text">Převzetí osobní odpovědnosti likvidátora</span>
+              <span class="num-text" data-i18n="coop-4">Převzetí osobní odpovědnosti likvidátora</span>
             </li>
           </ul>
         </div>
@@ -875,7 +919,7 @@ footer { border-top: 1px solid #e9e9e9; }
   <!-- ── Součást skupiny Fortis ────────────────────── -->
   <section class="group-box-section">
     <div class="container-wide">
-      <h2 style="text-align:center;font-size:clamp(2rem,5vw,3.5rem);font-weight:600;line-height:1.08;color:#101767;margin-bottom:48px;">
+      <h2 data-i18n="group-h" style="text-align:center;font-size:clamp(2rem,5vw,3.5rem);font-weight:600;line-height:1.08;color:#101767;margin-bottom:48px;">
         Součást skupiny<br><span style="color:#6873B0;">fortis.group</span>
       </h2>
       <div class="group-box">
@@ -895,54 +939,54 @@ footer { border-top: 1px solid #e9e9e9; }
   <!-- ── REFERENCE ─────────────────────────────────── -->
   <section class="reference-section" id="reference">
     <div class="container">
-      <span class="section-label">Reference</span>
-      <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:600;line-height:1.08;color:#101767;max-width:16ch;">
+      <span class="section-label" data-i18n="label-ref">Reference</span>
+      <h2 data-i18n="ref-h" style="font-size:clamp(2rem,5vw,3.5rem);font-weight:600;line-height:1.08;color:#101767;max-width:16ch;">
         Zkušenosti,<br>na které se<br><span style="color:#6873B0;">můžete spolehnout</span>
       </h2>
       <div class="ref-cols">
         <div class="ref-col">
-          <h3>Oblasti působnosti Lexliq</h3>
+          <h3 data-i18n="ref-col-1-h">Oblasti působnosti Lexliq</h3>
           <div class="ref-items">
             <div class="ref-item">
               <span class="ref-item-num">01</span>
-              <span class="ref-item-text">Likvidace neaktivních obchodních společností</span>
+              <span class="ref-item-text" data-i18n="ref-1-1">Likvidace neaktivních obchodních společností</span>
             </div>
             <div class="ref-item">
               <span class="ref-item-num">02</span>
-              <span class="ref-item-text">Ukončování projektových SPV</span>
+              <span class="ref-item-text" data-i18n="ref-1-2">Ukončování projektových SPV</span>
             </div>
             <div class="ref-item">
               <span class="ref-item-num">03</span>
-              <span class="ref-item-text">Likvidace po M&amp;A transakcích</span>
+              <span class="ref-item-text" data-i18n="ref-1-3">Likvidace po M&amp;A transakcích</span>
             </div>
             <div class="ref-item">
               <span class="ref-item-num">04</span>
-              <span class="ref-item-text">Správa dokumentace a compliance v závěrečných fázích podnikání</span>
+              <span class="ref-item-text" data-i18n="ref-1-4">Správa dokumentace a compliance v závěrečných fázích podnikání</span>
             </div>
           </div>
         </div>
         <div class="ref-col">
-          <h3>Zkušenosti týmu</h3>
+          <h3 data-i18n="ref-col-2-h">Zkušenosti týmu</h3>
           <div class="ref-items">
             <div class="ref-item">
               <span class="ref-item-num">01</span>
-              <span class="ref-item-text">Výkon funkce likvidátora obchodních korporací</span>
+              <span class="ref-item-text" data-i18n="ref-2-1">Výkon funkce likvidátora obchodních korporací</span>
             </div>
             <div class="ref-item">
               <span class="ref-item-num">02</span>
-              <span class="ref-item-text">Řízení závěrečných fází podnikání</span>
+              <span class="ref-item-text" data-i18n="ref-2-2">Řízení závěrečných fází podnikání</span>
             </div>
             <div class="ref-item">
               <span class="ref-item-num">03</span>
-              <span class="ref-item-text">Administrace a vypořádání majetku</span>
+              <span class="ref-item-text" data-i18n="ref-2-3">Administrace a vypořádání majetku</span>
             </div>
             <div class="ref-item">
               <span class="ref-item-num">04</span>
-              <span class="ref-item-text">Řízení compliance a dokumentace</span>
+              <span class="ref-item-text" data-i18n="ref-2-4">Řízení compliance a dokumentace</span>
             </div>
             <div class="ref-item">
               <span class="ref-item-num">05</span>
-              <span class="ref-item-text">Řízení compliance a dokumentace</span>
+              <span class="ref-item-text" data-i18n="ref-2-5">Správa a skartace dokumentů</span>
             </div>
           </div>
         </div>
@@ -954,9 +998,9 @@ footer { border-top: 1px solid #e9e9e9; }
   <section class="cta-section">
     <div class="container">
       <div class="cta-inner">
-        <h2>Kontaktujte nás a připojte se<br>k řadě spokojených klientů</h2>
-        <p>Naši klienti využívají služby Lexliq při ukončování společností s jistotou, že celý proces proběhne profesionálně, bezpečně a v souladu se zákonem.</p>
-        <a href="#kontakt" class="btn-green" style="height:52px;padding:0 36px;font-size:1rem;">Kontaktujte nás</a>
+        <h2 data-i18n="cta-h">Kontaktujte nás a připojte se<br>k řadě spokojených klientů</h2>
+        <p data-i18n="cta-p">Naši klienti využívají služby Lexliq při ukončování společností s jistotou, že celý proces proběhne profesionálně, bezpečně a v souladu se zákonem.</p>
+        <a href="#kontakt" class="btn-green" data-i18n="cta-btn" style="height:52px;padding:0 36px;font-size:1rem;">Kontaktujte nás</a>
       </div>
     </div>
   </section>
@@ -966,26 +1010,26 @@ footer { border-top: 1px solid #e9e9e9; }
     <div class="container">
       <div class="contact-grid">
         <div class="contact-info">
-          <span class="section-label">Kontakt</span>
-          <h2>Spojte se<br>s námi</h2>
-          <p>Rádi si s vámi promluvíme o vašem případu a navrhneme optimální postup. Konzultace je bez závazků.</p>
+          <span class="section-label" data-i18n="label-contact">Kontakt</span>
+          <h2 data-i18n="contact-h">Spojte se<br>s námi</h2>
+          <p data-i18n="contact-p">Rádi si s vámi promluvíme o vašem případu a navrhneme optimální postup. Konzultace je bez závazků.</p>
           <div class="contact-items">
             <div class="contact-item">
               <div>
-                <div class="contact-item-label">E-mail</div>
+                <div class="contact-item-label" data-i18n="contact-email-label">E-mail</div>
                 <div class="contact-item-val"><a href="mailto:info@lexliq.cz">info@lexliq.cz</a></div>
               </div>
             </div>
             <div class="contact-item">
               <div>
-                <div class="contact-item-label">Adresa</div>
+                <div class="contact-item-label" data-i18n="contact-addr-label">Adresa</div>
                 <div class="contact-item-val">Jurečkova 1811/18</div>
                 <div class="contact-item-sub">702 00 Moravská Ostrava a Přívoz</div>
               </div>
             </div>
             <div class="contact-item">
               <div>
-                <div class="contact-item-label">Společnost</div>
+                <div class="contact-item-label" data-i18n="contact-company-label">Společnost</div>
                 <div class="contact-item-val">Lexliq s.r.o.</div>
                 <div class="contact-item-sub">IČ: 09986201 &nbsp;·&nbsp; DIČ: CZ09986201</div>
               </div>
@@ -993,37 +1037,41 @@ footer { border-top: 1px solid #e9e9e9; }
           </div>
         </div>
         <div class="contact-form">
-          <h3>Nezávazná konzultace</h3>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Jméno</label>
-              <input type="text" placeholder="Jan Novák">
+          <h3 data-i18n="form-h">Nezávazná konzultace</h3>
+          <form id="contact-form" action="https://formspree.io/f/FORMSPREE_ID" method="POST" novalidate>
+            <input type="hidden" name="_subject" data-i18n-val="form-subject" value="Nová poptávka – Lexliq">
+            <input type="hidden" name="_language" value="cs">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-name" data-i18n="f-name-label">Jméno</label>
+                <input id="f-name" type="text" name="jmeno" placeholder="Jan Novák" data-i18n-ph="f-name-ph" required>
+              </div>
+              <div class="form-group">
+                <label for="f-email" data-i18n="f-email-label">E-mail</label>
+                <input id="f-email" type="email" name="email" placeholder="jan@firma.cz" data-i18n-ph="f-email-ph" required>
+              </div>
             </div>
             <div class="form-group">
-              <label>E-mail</label>
-              <input type="email" placeholder="jan@firma.cz">
+              <label for="f-company" data-i18n="f-company-label">Společnost / kancelář</label>
+              <input id="f-company" type="text" name="spolecnost" placeholder="Název firmy nebo AK" data-i18n-ph="f-company-ph">
             </div>
-          </div>
-          <div class="form-group">
-            <label>Společnost / kancelář</label>
-            <input type="text" placeholder="Název firmy nebo AK">
-          </div>
-          <div class="form-group">
-            <label>Typ poptávky</label>
-            <select>
-              <option value="">Vyberte…</option>
-              <option>Likvidace společnosti na klíč</option>
-              <option>Spolupráce s advokátní kanceláří</option>
-              <option>Archivace a skartace dokumentů</option>
-              <option>Konzultace – jiné</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Zpráva</label>
-            <textarea placeholder="Stručně popište váš případ nebo dotaz…"></textarea>
-          </div>
-          <button class="form-btn" onclick="handleForm(event)">Odeslat poptávku</button>
-          <p class="form-note">Vaše údaje jsou zpracovány v souladu s GDPR. Odpovíme do 24 hodin v pracovní dny.</p>
+            <div class="form-group">
+              <label for="f-type" data-i18n="f-type-label">Typ poptávky</label>
+              <select id="f-type" name="typ_poptavky">
+                <option value="" data-i18n="f-opt-0">Vyberte…</option>
+                <option data-i18n="f-opt-1">Likvidace společnosti na klíč</option>
+                <option data-i18n="f-opt-2">Spolupráce s advokátní kanceláří</option>
+                <option data-i18n="f-opt-3">Archivace a skartace dokumentů</option>
+                <option data-i18n="f-opt-4">Konzultace – jiné</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f-message" data-i18n="f-msg-label">Zpráva</label>
+              <textarea id="f-message" name="zprava" placeholder="Stručně popište váš případ nebo dotaz…" data-i18n-ph="f-msg-ph"></textarea>
+            </div>
+            <button type="submit" class="form-btn" id="form-btn" data-i18n="f-btn">Odeslat poptávku</button>
+            <p class="form-note" id="form-note" data-i18n="f-note">Vaše údaje jsou zpracovány v souladu s GDPR. Odpovíme do 24 hodin v pracovní dny.</p>
+          </form>
         </div>
       </div>
     </div>
@@ -1040,11 +1088,11 @@ footer { border-top: 1px solid #e9e9e9; }
         <span class="footer-logo-name">Lexliq</span>
       </a>
       <ul class="footer-nav">
-        <li><a href="#o-spolecnosti">O společnosti</a></li>
-        <li><a href="#sluzby">Služby</a></li>
-        <li><a href="#spoluprace">Spolupráce s AK</a></li>
-        <li><a href="#reference">Reference</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#o-spolecnosti" data-i18n="nav-about">O společnosti</a></li>
+        <li><a href="#sluzby" data-i18n="nav-services">Služby</a></li>
+        <li><a href="#spoluprace" data-i18n="nav-coop">Spolupráce</a></li>
+        <li><a href="#reference" data-i18n="nav-ref">Reference</a></li>
+        <li><a href="#kontakt" data-i18n="nav-contact">Kontakt</a></li>
       </ul>
       <div class="footer-meta">
         <span>© Lexliq s.r.o. 2026</span>
@@ -1055,7 +1103,7 @@ footer { border-top: 1px solid #e9e9e9; }
   </div>
   <div class="footer-group-bar">
     <div class="container">
-      Člen skupiny <a href="https://fortisgroup.cz" target="_blank" rel="noopener">fortis.group</a>
+      <span data-i18n="footer-member">Člen skupiny</span> <a href="https://fortisgroup.cz" target="_blank" rel="noopener">fortis.group</a>
     </div>
   </div>
 </footer>
@@ -1108,20 +1156,221 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const target = document.querySelector(id);
     if(target){
       e.preventDefault();
-      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 84, behavior: 'smooth' });
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 114, behavior: 'smooth' });
       closeMobileMenu();
     }
   });
 });
 
-// Form submit placeholder
-function handleForm(e){
-  const btn = e.target;
-  btn.textContent = 'Odesláno ✓';
-  btn.style.background = '#31b36f';
-  btn.disabled = true;
-  setTimeout(() => { btn.textContent = 'Odeslat poptávku'; btn.style.background = ''; btn.disabled = false; }, 3500);
+// ── I18N ─────────────────────────────────────────────
+const T = {
+  cs: {
+    'hello-bar': 'Profesionální likvidace obchodních společností &nbsp;·&nbsp; <a href="mailto:info@lexliq.cz">info@lexliq.cz</a>',
+    'nav-about':'O společnosti','nav-services':'Služby','nav-coop':'Spolupráce',
+    'nav-ref':'Reference','nav-contact':'Kontakt','nav-cta':'Domluvte si konzultaci',
+    'hero-h1':'Odborné řízení <em>likvidací</em> obchodních společností.',
+    'green-box-1':'Nezávislé a komplexní služby profesionálního likvidátora — pro účetní, daňové a advokátní kanceláře, nebo korporace a podnikatele, kteří potřebují ukončit podnikání správně a bez zbytečné zátěže.',
+    'feat-1-h':'Vaše jistota při ukončování podnikání',
+    'feat-1-p':'Přebíráme odpovědnost za celý proces likvidace — od přípravy dokumentace až po výmaz z obchodního rejstříku.',
+    'feat-2-h':'Odborný tým s praxí',
+    'feat-2-p':'Zkušenosti z corporate governance, restrukturalizací, M&A transakcí i krizového řízení — přenášíme je do každé likvidace.',
+    'feat-3-h':'Likvidace na klíč',
+    'feat-3-p':'Od rozhodnutí o likvidaci přes výkon funkce likvidátora až po archivaci a skartaci dokumentů — vše pod jednou střechou.',
+    'label-services':'Služby',
+    'services-h':'Co pro vás<br><em style="font-style:normal;color:#6873B0">zajistíme</em>',
+    'svc-1-h':'Příprava likvidace a vstupní analýza',
+    'svc-1-p':'Detailní analýza společnosti, dokumentace, účetnictví, majetku a závazků. Stanovíme správný a bezpečný postup likvidace.',
+    'svc-2-h':'Jmenování profesionálního likvidátora',
+    'svc-2-p':'Výkon funkce likvidátora odborným týmem Lexliq. Přebíráme zákonnou odpovědnost a zastupujeme společnost vůči úřadům i třetím osobám.',
+    'svc-3-h':'Vypořádání majetku a závazků',
+    'svc-3-p':'Řídíme ukončení smluvních vztahů, vypořádání závazků a pohledávek a případné zpeněžení majetku — v souladu s právními předpisy.',
+    'svc-4-h':'Administrace dokumentů a závěrečná zpráva',
+    'svc-4-p':'Vedení likvidační agendy, komunikace s úřady, zpracování účetní závěrky, příprava zprávy likvidátora a návrh na výmaz společnosti.',
+    'svc-5-h':'Archivace a certifikovaná skartace dokumentů',
+    'svc-5-p':'Zákonná archivace včetně digitalizace a řízená certifikovaná skartace s vydáním protokolu. Výrazně snižuje compliance rizika klienta i jeho poradců.',
+    'green-box-2':'Klienti se na nás obracejí, protože víme, jak ukončit podnikání bezpečně, transparentně a bez zbytečné osobní zátěže. Nejsme jen administrátoři — přebíráme skutečnou odpovědnost za výsledek.',
+    'label-coop':'Spolupráce',
+    'coop-h':'Outsourcovaný likvidátor<br><em style="font-style:normal;color:#6873B0">pro vaši kancelář či skupinu</em>',
+    'coop-p':'Lexliq působí jako outsourcovaný likvidátor pro advokátní kanceláře, účetní a daňové poradce. Vy zůstáváte hlavním kontaktem pro klienta — Lexliq zajišťuje odborné provedení likvidace.',
+    'coop-1':'White-label spolupráce','coop-2':'Outsourcing likvidací',
+    'coop-3':'Smluvní cenové modely','coop-4':'Převzetí osobní odpovědnosti likvidátora',
+    'group-h':'Součást skupiny<br><span style="color:#6873B0;">fortis.group</span>',
+    'label-ref':'Reference',
+    'ref-h':'Zkušenosti,<br>na které se<br><span style="color:#6873B0;">můžete spolehnout</span>',
+    'ref-col-1-h':'Oblasti působnosti Lexliq',
+    'ref-1-1':'Likvidace neaktivních obchodních společností',
+    'ref-1-2':'Ukončování projektových SPV',
+    'ref-1-3':'Likvidace po M&A transakcích',
+    'ref-1-4':'Správa dokumentace a compliance v závěrečných fázích podnikání',
+    'ref-col-2-h':'Zkušenosti týmu',
+    'ref-2-1':'Výkon funkce likvidátora obchodních korporací',
+    'ref-2-2':'Řízení závěrečných fází podnikání',
+    'ref-2-3':'Administrace a vypořádání majetku',
+    'ref-2-4':'Řízení compliance a dokumentace',
+    'ref-2-5':'Správa a skartace dokumentů',
+    'cta-h':'Kontaktujte nás a připojte se<br>k řadě spokojených klientů',
+    'cta-p':'Naši klienti využívají služby Lexliq při ukončování společností s jistotou, že celý proces proběhne profesionálně, bezpečně a v souladu se zákonem.',
+    'cta-btn':'Kontaktujte nás',
+    'label-contact':'Kontakt','contact-h':'Spojte se<br>s námi',
+    'contact-p':'Rádi si s vámi promluvíme o vašem případu a navrhneme optimální postup. Konzultace je bez závazků.',
+    'contact-email-label':'E-mail','contact-addr-label':'Adresa','contact-company-label':'Společnost',
+    'form-h':'Nezávazná konzultace','form-subject':'Nová poptávka – Lexliq',
+    'f-name-label':'Jméno','f-name-ph':'Jan Novák',
+    'f-email-label':'E-mail','f-email-ph':'jan@firma.cz',
+    'f-company-label':'Společnost / kancelář','f-company-ph':'Název firmy nebo AK',
+    'f-type-label':'Typ poptávky',
+    'f-opt-0':'Vyberte…','f-opt-1':'Likvidace společnosti na klíč',
+    'f-opt-2':'Spolupráce s advokátní kanceláří','f-opt-3':'Archivace a skartace dokumentů',
+    'f-opt-4':'Konzultace – jiné',
+    'f-msg-label':'Zpráva','f-msg-ph':'Stručně popište váš případ nebo dotaz…',
+    'f-btn':'Odeslat poptávku',
+    'f-note':'Vaše údaje jsou zpracovány v souladu s GDPR. Odpovíme do 24 hodin v pracovní dny.',
+    'footer-member':'Člen skupiny',
+    'form-sending':'Odesílám…','form-sent':'Odesláno ✓',
+    'form-err':'Nepodařilo se odeslat formulář. Zkuste to znovu nebo napište na info@lexliq.cz.',
+    'form-required':'Vyplňte prosím jméno a e-mail.',
+  },
+  en: {
+    'hello-bar': 'Professional business liquidation services &nbsp;·&nbsp; <a href="mailto:info@lexliq.cz">info@lexliq.cz</a>',
+    'nav-about':'About','nav-services':'Services','nav-coop':'Cooperation',
+    'nav-ref':'References','nav-contact':'Contact','nav-cta':'Book a consultation',
+    'hero-h1':'Professional management of <em>business liquidations.</em>',
+    'green-box-1':'Independent and comprehensive professional liquidator services — for accounting, tax and law firms, as well as corporations and entrepreneurs who need to close a business correctly and without unnecessary burden.',
+    'feat-1-h':'Your assurance in closing a business',
+    'feat-1-p':'We take full responsibility for the liquidation process — from preparing documentation to removal from the commercial register.',
+    'feat-2-h':'Expert team with experience',
+    'feat-2-p':'Experience in corporate governance, restructurings, M&A transactions and crisis management — applied to every liquidation.',
+    'feat-3-h':'Turn-key liquidation',
+    'feat-3-p':'From the decision to liquidate through acting as liquidator to document archiving and shredding — everything under one roof.',
+    'label-services':'Services',
+    'services-h':'What we will<br><em style="font-style:normal;color:#6873B0">handle for you</em>',
+    'svc-1-h':'Liquidation preparation and initial analysis',
+    'svc-1-p':'Detailed analysis of the company, documentation, accounting, assets and liabilities. We establish the correct and safe liquidation procedure.',
+    'svc-2-h':'Appointment of a professional liquidator',
+    'svc-2-p':'The Lexliq expert team acts as liquidator. We assume legal responsibility and represent the company before authorities and third parties.',
+    'svc-3-h':'Settlement of assets and liabilities',
+    'svc-3-p':'We manage the termination of contractual relationships, settlement of liabilities and receivables, and possible monetisation of assets — in compliance with legal regulations.',
+    'svc-4-h':'Document administration and final report',
+    'svc-4-p':'Maintaining the liquidation agenda, communicating with authorities, preparing financial statements, the liquidator\'s report and the proposal for removal from the register.',
+    'svc-5-h':'Archiving and certified document shredding',
+    'svc-5-p':'Statutory archiving including digitisation and supervised certified shredding with protocol. Significantly reduces compliance risks for the client and their advisors.',
+    'green-box-2':'Clients turn to us because we know how to close a business safely, transparently and without unnecessary personal burden. We are not just administrators — we take real responsibility for the outcome.',
+    'label-coop':'Cooperation',
+    'coop-h':'Outsourced liquidator<br><em style="font-style:normal;color:#6873B0">for your office or group</em>',
+    'coop-p':'Lexliq acts as an outsourced liquidator for law firms, accountants and tax advisors. You remain the primary contact for the client — Lexliq ensures expert execution of the liquidation.',
+    'coop-1':'White-label cooperation','coop-2':'Outsourcing of liquidations',
+    'coop-3':'Contractual pricing models','coop-4':'Assumption of personal liability of the liquidator',
+    'group-h':'Part of the<br><span style="color:#6873B0;">fortis.group</span>',
+    'label-ref':'References',
+    'ref-h':'Experience<br>you can<br><span style="color:#6873B0;">rely on</span>',
+    'ref-col-1-h':'Areas of Lexliq activity',
+    'ref-1-1':'Liquidation of inactive business companies',
+    'ref-1-2':'Closure of project SPVs',
+    'ref-1-3':'Post M&A transaction liquidations',
+    'ref-1-4':'Document management and compliance in final stages of business',
+    'ref-col-2-h':'Team experience',
+    'ref-2-1':'Acting as liquidator for business corporations',
+    'ref-2-2':'Managing final stages of business operations',
+    'ref-2-3':'Administration and settlement of assets',
+    'ref-2-4':'Compliance and document management',
+    'ref-2-5':'Document management and shredding',
+    'cta-h':'Contact us and join<br>our satisfied clients',
+    'cta-p':'Our clients use Lexliq when closing companies, confident that the entire process will proceed professionally, safely and in accordance with the law.',
+    'cta-btn':'Contact us',
+    'label-contact':'Contact','contact-h':'Get in<br>touch',
+    'contact-p':'We would be happy to discuss your case and propose the optimal approach. The consultation is non-binding.',
+    'contact-email-label':'E-mail','contact-addr-label':'Address','contact-company-label':'Company',
+    'form-h':'Non-binding consultation','form-subject':'New enquiry – Lexliq',
+    'f-name-label':'Name','f-name-ph':'John Smith',
+    'f-email-label':'E-mail','f-email-ph':'john@company.com',
+    'f-company-label':'Company / office','f-company-ph':'Company or law firm name',
+    'f-type-label':'Type of enquiry',
+    'f-opt-0':'Select…','f-opt-1':'Turn-key company liquidation',
+    'f-opt-2':'Cooperation with a law firm','f-opt-3':'Archiving and document shredding',
+    'f-opt-4':'Consultation – other',
+    'f-msg-label':'Message','f-msg-ph':'Briefly describe your case or question…',
+    'f-btn':'Send enquiry',
+    'f-note':'Your data is processed in accordance with GDPR. We will respond within 24 hours on business days.',
+    'footer-member':'Member of',
+    'form-sending':'Sending…','form-sent':'Sent ✓',
+    'form-err':'Failed to send the form. Please try again or email info@lexliq.cz.',
+    'form-required':'Please fill in your name and email.',
+  }
+};
+
+let currentLang = localStorage.getItem('lexliq_lang') || 'cs';
+
+function setLang(lang) {
+  const t = T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = t[el.dataset.i18n];
+    if(v !== undefined) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const v = t[el.dataset.i18nPh];
+    if(v !== undefined) el.placeholder = v;
+  });
+  document.querySelectorAll('[data-i18n-val]').forEach(el => {
+    const v = t[el.dataset.i18nVal];
+    if(v !== undefined) el.value = v;
+  });
+  document.documentElement.lang = lang;
+  document.title = lang === 'en'
+    ? 'Lexliq – Professional Business Liquidation Services'
+    : 'Lexliq – Profesionální likvidace obchodních společností';
+  document.getElementById('lang-cs').classList.toggle('active', lang === 'cs');
+  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+  currentLang = lang;
+  localStorage.setItem('lexliq_lang', lang);
 }
+
+setLang(currentLang);
+
+// Contact form – Formspree
+const contactForm = document.getElementById('contact-form');
+const formBtn     = document.getElementById('form-btn');
+const formNote    = document.getElementById('form-note');
+
+contactForm.addEventListener('submit', async function(e){
+  e.preventDefault();
+
+  const t = T[currentLang];
+  const email = contactForm.querySelector('[name="email"]');
+  const jmeno = contactForm.querySelector('[name="jmeno"]');
+  if(!jmeno.value.trim() || !email.value.trim()){
+    formNote.textContent = t['form-required'];
+    formNote.style.color = '#e05';
+    return;
+  }
+
+  formBtn.textContent = t['form-sending'];
+  formBtn.disabled = true;
+
+  try {
+    const resp = await fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if(resp.ok){
+      formBtn.textContent = t['form-sent'];
+      formBtn.style.background = '#31b36f';
+      formNote.textContent = t['f-note'];
+      formNote.style.color = '#31b36f';
+      contactForm.reset();
+    } else {
+      const data = await resp.json();
+      throw new Error(data?.errors?.[0]?.message || '');
+    }
+  } catch(err){
+    formBtn.textContent = t['f-btn'];
+    formBtn.disabled = false;
+    formBtn.style.background = '';
+    formNote.textContent = t['form-err'];
+    formNote.style.color = '#e05';
+  }
+});
 
 // Scroll reveal
 const revealObserver = new IntersectionObserver((entries) => {
