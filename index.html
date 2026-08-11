@@ -1032,7 +1032,7 @@ footer { border-top: 1px solid #e9e9e9; }
         </div>
         <div class="contact-form">
           <h3 data-i18n="form-h">Nezávazná konzultace</h3>
-          <form id="contact-form" action="https://formspree.io/f/FORMSPREE_ID" method="POST" novalidate>
+          <form id="contact-form" action="/api/contact" method="POST" novalidate>
             <input type="hidden" name="_subject" data-i18n-val="form-subject" value="Nová poptávka – Lexliq">
             <input type="hidden" name="_language" value="cs">
             <div class="form-row">
@@ -1341,10 +1341,11 @@ contactForm.addEventListener('submit', async function(e){
   formBtn.disabled = true;
 
   try {
+    const data = Object.fromEntries(new FormData(contactForm));
     const resp = await fetch(contactForm.action, {
       method: 'POST',
-      body: new FormData(contactForm),
-      headers: { 'Accept': 'application/json' }
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
     });
 
     if(resp.ok){
