@@ -2,8 +2,8 @@ const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
   host: 'wes1-smtp.wedos.net',
-  port: 465,
-  secure: true,
+  port: 587,
+  secure: false,
   auth: {
     user: 'info@lexliq.cz',
     pass: process.env.SMTP_PASS,
@@ -49,6 +49,6 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error('SMTP error:', err);
-    return res.status(500).json({ ok: false, error: 'Chyba při odesílání.' });
+    return res.status(500).json({ ok: false, error: err.message });
   }
 };
