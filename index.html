@@ -1355,14 +1355,14 @@ contactForm.addEventListener('submit', async function(e){
       formNote.style.color = '#31b36f';
       contactForm.reset();
     } else {
-      const data = await resp.json();
-      throw new Error(data?.errors?.[0]?.message || '');
+      const data = await resp.json().catch(()=>({}));
+      throw new Error(data?.error || resp.status);
     }
   } catch(err){
     formBtn.textContent = t['f-btn'];
     formBtn.disabled = false;
     formBtn.style.background = '';
-    formNote.textContent = t['form-err'];
+    formNote.textContent = err.message || t['form-err'];
     formNote.style.color = '#e05';
   }
 });
