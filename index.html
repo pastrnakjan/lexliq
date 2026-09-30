@@ -718,6 +718,8 @@ footer { border-top: 1px solid #e9e9e9; }
           <button id="lang-cs" class="lang-btn active" onclick="setLang('cs')">CZ</button>
           <span class="lang-sep">|</span>
           <button id="lang-en" class="lang-btn" onclick="setLang('en')">EN</button>
+          <span class="lang-sep">|</span>
+          <button id="lang-pl" class="lang-btn" onclick="setLang('pl')">PL</button>
         </div>
         <a href="#kontakt" class="btn-green" data-i18n="nav-cta">Domluvte si konzultaci</a>
         <button class="nav-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
@@ -1291,6 +1293,72 @@ const T = {
     'form-sending':'Sending…','form-sent':'Sent ✓',
     'form-err':'Failed to send the form. Please try again or email info@lexliq.cz.',
     'form-required':'Please fill in your name and email.',
+  },
+  pl: {
+    'hello-bar': 'Profesjonalna likwidacja spółek handlowych &nbsp;·&nbsp; <a href="mailto:info@lexliq.cz">info@lexliq.cz</a>',
+    'nav-about':'O firmie','nav-services':'Usługi','nav-coop':'Współpraca',
+    'nav-ref':'Referencje','nav-contact':'Kontakt','nav-cta':'Umów konsultację',
+    'hero-h1':'Profesjonalne zarządzanie <em>likwidacją</em> spółek handlowych.',
+    'green-box-1':'Niezależne i kompleksowe usługi profesjonalnego likwidatora — dla biur rachunkowych, doradców podatkowych i kancelarii prawnych, a także korporacji i przedsiębiorców, którzy muszą prawidłowo zakończyć działalność bez zbędnego obciążenia.',
+    'feat-1-h':'Twoja pewność przy zamykaniu działalności',
+    'feat-1-p':'Przejmujemy odpowiedzialność za cały proces likwidacji — od przygotowania dokumentacji po wykreślenie z rejestru handlowego.',
+    'feat-2-h':'Zespół ekspertów z doświadczeniem',
+    'feat-2-p':'Doświadczenie w ładzie korporacyjnym, restrukturyzacjach, transakcjach M&A i zarządzaniu kryzysowym — wykorzystujemy je w każdej likwidacji.',
+    'feat-3-h':'Likwidacja pod klucz',
+    'feat-3-p':'Od decyzji o likwidacji, przez pełnienie funkcji likwidatora, po archiwizację i niszczenie dokumentów — wszystko w jednym miejscu.',
+    'label-services':'Usługi',
+    'services-h':'Co dla Ciebie<br><em style="font-style:normal;color:#6873B0">zapewnimy</em>',
+    'svc-1-h':'Przygotowanie likwidacji i analiza wstępna',
+    'svc-1-p':'Szczegółowa analiza spółki, dokumentacji, księgowości, majątku i zobowiązań. Ustalamy właściwy i bezpieczny sposób przeprowadzenia likwidacji.',
+    'svc-2-h':'Powołanie profesjonalnego likwidatora',
+    'svc-2-p':'Funkcję likwidatora pełni zespół ekspertów Lexliq. Przejmujemy odpowiedzialność prawną i reprezentujemy spółkę wobec urzędów oraz osób trzecich.',
+    'svc-3-h':'Rozliczenie majątku i zobowiązań',
+    'svc-3-p':'Zarządzamy zakończeniem stosunków umownych, rozliczeniem zobowiązań i wierzytelności oraz ewentualnym spieniężeniem majątku — zgodnie z przepisami prawa.',
+    'svc-4-h':'Administracja dokumentów i raport końcowy',
+    'svc-4-p':'Prowadzenie agendy likwidacyjnej, komunikacja z urzędami, sporządzenie sprawozdania finansowego, przygotowanie raportu likwidatora oraz wniosku o wykreślenie spółki.',
+    'svc-5-h':'Archiwizacja i certyfikowane niszczenie dokumentów',
+    'svc-5-p':'Ustawowa archiwizacja wraz z digitalizacją oraz nadzorowane, certyfikowane niszczenie dokumentów z wydaniem protokołu. Znacząco ogranicza ryzyko compliance klienta i jego doradców.',
+    'green-box-2':'Klienci zwracają się do nas, ponieważ wiemy, jak bezpiecznie i transparentnie zakończyć działalność, bez zbędnego osobistego obciążenia. Nie jesteśmy tylko administratorami — bierzemy realną odpowiedzialność za wynik.',
+    'label-coop':'Współpraca',
+    'coop-h':'Outsourcowany likwidator<br><em style="font-style:normal;color:#6873B0">dla Twojej kancelarii lub grupy</em>',
+    'coop-p':'Lexliq działa jako outsourcowany likwidator dla kancelarii prawnych, biur rachunkowych i doradców podatkowych. Ty pozostajesz głównym kontaktem dla klienta — Lexliq zapewnia fachowe przeprowadzenie likwidacji.',
+    'coop-1':'Współpraca white-label','coop-2':'Outsourcing likwidacji',
+    'coop-3':'Umowne modele cenowe','coop-4':'Przejęcie osobistej odpowiedzialności likwidatora',
+    'group-h':'Część grupy<br><span style="color:#6873B0;">fortis.group</span>',
+    'label-ref':'Referencje',
+    'ref-h':'Doświadczenie,<br>na którym<br><span style="color:#6873B0;">możesz polegać</span>',
+    'ref-col-1-h':'Obszary działalności Lexliq',
+    'ref-1-1':'Likwidacja nieaktywnych spółek handlowych',
+    'ref-1-2':'Zamykanie projektowych spółek celowych (SPV)',
+    'ref-1-3':'Likwidacje po transakcjach M&A',
+    'ref-1-4':'Zarządzanie dokumentacją i compliance w końcowych fazach działalności',
+    'ref-col-2-h':'Doświadczenie zespołu',
+    'ref-2-1':'Pełnienie funkcji likwidatora spółek handlowych',
+    'ref-2-2':'Zarządzanie końcowymi fazami działalności',
+    'ref-2-3':'Administracja i rozliczenie majątku',
+    'ref-2-4':'Zarządzanie compliance i dokumentacją',
+    'ref-2-5':'Zarządzanie i niszczenie dokumentów',
+    'cta-h':'Skontaktuj się z nami i dołącz<br>do grona zadowolonych klientów',
+    'cta-p':'Nasi klienci korzystają z usług Lexliq przy zamykaniu spółek, mając pewność, że cały proces przebiegnie profesjonalnie, bezpiecznie i zgodnie z prawem.',
+    'cta-btn':'Skontaktuj się z nami',
+    'label-contact':'Kontakt','contact-h':'Skontaktuj<br>się z nami',
+    'contact-p':'Chętnie porozmawiamy o Twojej sprawie i zaproponujemy optymalne rozwiązanie. Konsultacja jest niezobowiązująca.',
+    'contact-email-label':'E-mail','contact-addr-label':'Adres','contact-company-label':'Firma',
+    'form-h':'Niezobowiązująca konsultacja','form-subject':'Nowe zapytanie – Lexliq',
+    'f-name-label':'Imię i nazwisko','f-name-ph':'Jan Kowalski',
+    'f-email-label':'E-mail','f-email-ph':'jan@firma.pl',
+    'f-company-label':'Firma / kancelaria','f-company-ph':'Nazwa firmy lub kancelarii',
+    'f-type-label':'Rodzaj zapytania',
+    'f-opt-0':'Wybierz…','f-opt-1':'Likwidacja spółki pod klucz',
+    'f-opt-2':'Współpraca z kancelarią prawną','f-opt-3':'Archiwizacja i niszczenie dokumentów',
+    'f-opt-4':'Konsultacja – inne',
+    'f-msg-label':'Wiadomość','f-msg-ph':'Krótko opisz swoją sprawę lub pytanie…',
+    'f-btn':'Wyślij zapytanie',
+    'f-note':'Twoje dane są przetwarzane zgodnie z RODO. Odpowiemy w ciągu 24 godzin w dni robocze.',
+    'footer-member':'Członek grupy',
+    'form-sending':'Wysyłanie…','form-sent':'Wysłano ✓',
+    'form-err':'Nie udało się wysłać formularza. Spróbuj ponownie lub napisz na info@lexliq.cz.',
+    'form-required':'Proszę podać imię i adres e-mail.',
   }
 };
 
@@ -1311,11 +1379,15 @@ function setLang(lang) {
     if(v !== undefined) el.value = v;
   });
   document.documentElement.lang = lang;
-  document.title = lang === 'en'
-    ? 'Lexliq – Professional Business Liquidation Services'
-    : 'Lexliq – Profesionální likvidace obchodních společností';
+  const titles = {
+    cs: 'Lexliq – Profesionální likvidace obchodních společností',
+    en: 'Lexliq – Professional Business Liquidation Services',
+    pl: 'Lexliq – Profesjonalna likwidacja spółek handlowych',
+  };
+  document.title = titles[lang] || titles.cs;
   document.getElementById('lang-cs').classList.toggle('active', lang === 'cs');
   document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+  document.getElementById('lang-pl').classList.toggle('active', lang === 'pl');
   currentLang = lang;
   localStorage.setItem('lexliq_lang', lang);
 }
